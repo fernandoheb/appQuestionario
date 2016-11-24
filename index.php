@@ -516,7 +516,7 @@ Responda as questões da seção seguinte pensando na importância que você con
 								$aux = $queryLP["max"];
 
 
-
+                                                                     //ficar atento a mudan�as no banco. Quando o select n�o for associativo       
 								$customQuery='SELECT  `questao` . * ,  `escala`. * FROM `questao` INNER JOIN `escala` ON `questao`.`escalaId` = `escala`.`id` WHERE exibir = 1 ORDER BY ordem ASC';
 
 								$query2 = $puxaBD->selectCustomQuery($customQuery);
@@ -551,23 +551,23 @@ Responda as questões da seção seguinte pensando na importância que você con
                                                                                                                                        
 																	<input type="radio" id="alt5_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="2" >
 																	<label for="alt5_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[16]) /*utf8_encode($queryLP["alt5"])*/ .'</strong>																		</label>																	</div>
+																	<strong>'. utf8_encode($queryLP[17]) /*utf8_encode($queryLP["alt5"])*/ .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt4_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="1" '.$eh_um_teste.'>
 																	<label for="alt4_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[15]) .'</strong>																		</label>																	</div>
+																	<strong>'. utf8_encode($queryLP[16]) .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt3_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'" value="0">
 																	<label for="alt3_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[14]) .'</strong>																		</label>																	</div>
+																	<strong>'. utf8_encode($queryLP[15]) .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt2_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="-1">
 																	<label for="alt2_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[13]) .'</strong>																		</label>																	</div>
+																	<strong>'. utf8_encode($queryLP[14]) .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																		<input type="radio" id="alt1_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'" value="-2">
 																		<label for="alt1_'.$queryLP[0] .'">
-																			<strong>'. utf8_encode($queryLP[12]) .'</strong>
+																			<strong>'. utf8_encode($queryLP[13]) .'</strong>
 																		</label>
 																	</div>
 																</div>
