@@ -916,7 +916,7 @@ Detalhes(0,1);
 											<strong>Obrigado pela sua participação</strong>
 										</label>
 										<br></br><!--alterar o endereço-->
-										<a  class="btn btn-primary" href="http://localhost/questionario/index.php">
+										<a  class="btn btn-primary" href="./index.php">
 											Retornar a página inicial.
 										</a>
 										<br></br>
@@ -930,7 +930,7 @@ Detalhes(0,1);
 						    echo'					<div class="text-center" id="b3">
 										<br></br>
 												
-										<a  class="btn btn-primary"  href="http://localhost/questionario/index.php">
+										<a  class="btn btn-primary"  href="./index.php">
 											<h2 style="color:blue"><strong>Faça a pesquisa você também!</span></h2>
 										</a>
 									</div>';
@@ -1086,7 +1086,7 @@ Detalhes(0,1);
 					<br>
 					    <center>
 						<!-- alterar endereço -->
-					        <a href="http://localhost/questionario/colaboradores.php"><input type="button" class="btn-primary" value="Quem somos"></input></a>
+					        <a href="./colaboradores.php"><input type="button" class="btn-primary" value="Quem somos"></input></a>
 					        <br><br>
 					            <table style="background:#F0F0F0;"><td>
 					        <div class="col-sm-3">&nbsp</div>
@@ -1135,7 +1135,7 @@ Detalhes(0,1);
             		document.getElementById("form-group").style.display="none";
 						//alterar o endereço
             			$.ajax({
-					url : 'http://localhost/questionario/saveData2.php?concordo',
+					url : './saveData.php?concordo',
 					type: 'POST',
 					dataType: 'json',
 					data: ({respostaOpinao:check , respostaId:idResposta, respostaTipoJogador:tipoJogador}),
@@ -1148,7 +1148,7 @@ Detalhes(0,1);
 
 			if(check=="nao"){
 				//alterar o endereço
-			url = "http://localhost/questionario/nconcordo.php?id="+idResposta;
+			url = "./nconcordo.php?id="+idResposta;
 				window.location.assign(url);
 			}
 			else if(<?php echo $flag_resposta; ?> == 1){
@@ -1163,7 +1163,7 @@ Detalhes(0,1);
 
 
 			function finalizar(){//alterar o endereco
-				window.location.assign('http://localhost/questionario/index.php');
+				window.location.assign('./index.php');
 			}
 
 
