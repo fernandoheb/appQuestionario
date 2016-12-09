@@ -132,9 +132,9 @@ document.getElementById("buttonsubmit").class=document.getElementById("buttonsub
      type: "success"
      },
      function(){//alterar endereço
-     window.location = "http://localhost/questionario/";
+     window.location = "./";
      })
-     url = "feedbacknconcordo.php?id="+<?php echo $aux;?>;
+     url = "./feedbacknconcordo.php?id="+<?php echo $aux;?>;
      i=0;
      while(i<11){
      if(TiposSelecionados[i]==1){url=url+"&type"+i+"=1&rating"+i+"="+rating[i];}
