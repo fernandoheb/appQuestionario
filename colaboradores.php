@@ -1,10 +1,12 @@
 <?php
+    header('Content-Type: text/html; charset=utf-8');
 	include '../functions.inc2.php';
 		$puxaBD = new Crud();
 		$puxaBD->conn();
 	/*	$link = mysql_connect('localhost','root','Gerente1*');
 		mysql_select_db('brunopra_yee', $link);
 		mysql_query("SET NAMES 'utf8'", $link);*/
+               
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +62,7 @@
 		<title>Questionário do jogador</title>
 		<!-- start: META -->
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
-		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -153,26 +155,27 @@
 		<div class="col-md-2">&nbsp</div>
 		<div class="col-md-3 box effect6">
 		  <center> <img style="margin-top: 20px; margin-bottom: 20px;" src="img/fotos/'.$row->Foto.'" width="80px" height="80px"></img><br>
-		        <h3 align="center">'.$row->Name.'</h3>
+		        <h3 align="center">'.utf8_decode($row->Name).'</h3>
 		        </center>
 
 		        <p align="left">
-		            <b>Formação:</b> '.$row->Formacao.'<br>
-		               <b> Afiliação:</b> '.$row->Afiliacao.'<br>
-		                    <b>Lattes:</b> <a target="_blank" href="'.$row->lattes.'">'.$row->lattes.'</a><br>
-		                   <b> Email:</b> '.$row->email.'<br>
+		            <b>Formação:</b> '.utf8_decode($row->Formacao).'<br>
+		               <b> Afiliação:</b> '.utf8_decode($row->Afiliacao).'<br>
+		                    <b>Lattes:</b> <a target="_blank" href="'.$row->lattes.'">'.utf8_decode($row->lattes).'</a><br>
+		                   <b> Email:</b> '.utf8_decode($row->email).'<br>
 		        </p>
 		</div>
 ';} else { echo'
 <div class="col-md-2">&nbsp</div>
 		<div class="col-md-3 box effect6">
 		  <center> <img style="margin-top: 20px; margin-bottom: 20px;" src="img/fotos/'.$row->Foto.'"width="80px" height="80px"></img><br>
-		        <h3 align="center">'.$row->Name.'</h3></center>
+		        <h3 align="center">'.utf8_decode($row->Name).'</h3></center>
 		        <p align="left">
-		            <b>Formação:</b> '.$row->Formacao.'<br>
-		               <b> Afiliação:</b> '.$row->Afiliacao.'<br>
-		                    <b>Lattes:</b> <a target="_blank" href="'.$row->lattes.'">'.$row->lattes.'</a><br>
-		                   <b> Email:</b> '.$row->email.'<br>
+		            <b>Formação:</b> '.utf8_decode($row->Formacao).'<br>
+		               <b> Afiliação:</b> '.utf8_decode($row->Afiliacao).'<br>
+		                    <b>Lattes:</b> <a target="_blank" href="'.utf8_decode($row->lattes).'">'.utf8_decode($row->lattes).'</a><br>
+		                   <b> Email:</b> '.utf8_decode($row->email).'<br>
+                                       
 		        </p>
 		</div>
 
