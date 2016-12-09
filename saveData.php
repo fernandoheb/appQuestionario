@@ -230,45 +230,6 @@
 		}
 
 		
-	if(isset($_GET["CadastraGrupo"])){
-		$row = null;		
-		$retorno = $puxaBD->selectCustomQuery('select * from grupo_pesquisa where sigla = ' .utf8_decode($_POST["sigla"]).' order by datetime DESC');	
-		if (!retorno) {
-			$query1 = $puxaBD->selectCustomQuery( 
-			 'INSERT INTO `grupo_pesquisa`(`Nome_Grupo`, `Sigla`, `Email_grupo`, `Responsavel`, `Senha`, `Email_resp`, `Contato`, `Descricao`, `Afiliacao`) VALUES 
-			('.utf8_decode($_POST["nomeGrupo"]).',' .utf8_decode($_POST["sigla"]).','
-			  .utf8_decode($_POST["emailGrupo"]).','.utf8_decode($_POST["responsavel"]).','
-			  .utf8_decode($_POST["senha"]).','.utf8_decode($_POST["emailResp"]).','
-			  .utf8_decode($_POST["contato"]).','.utf8_decode($_POST["descricao"]).','.utf8_decode($_POST["afiliacao"]).')');
-			  
-			  $insercao = $puxaBD->selectCustomQuery('select * from grupo_pesquisa where sigla = ' .utf8_decode($_POST["sigla"]).' order by datetime DESC');	
-			  $row = $insercao->fetch_assoc();
-			
-			echo json;
-			
-			} else {
-				$row = $retorno->fetch_assoc();				
-		}
-		echo json_encode($row);
-	}
-		
-	if(isset($_GET["InseriGrupoExperimental"])){
-			$query1 = $puxaBD->selectCustomQuery( 
-			 'INSERT INTO `grupo_pesquisa`(`Grupo_Pesquisa_ID`, `Descricao`, `Populacao`) VALUES 
-			('.utf8_decode($_POST["grpPesqID"]).',' .utf8_decode($_POST["descricao"]).','
-			  .utf8_decode($_POST["populacao"]).')');			  
-			  $insercao = $puxaBD->selectCustomQuery('select grupo_experimental.ID, grupo_pesquisa.Sigla from grupo_experimental 
-			  INNER join grupo_pesquisa on grupo_experimental.Grupo_Pesquisa_ID = grupo_pesquisa.ID WHERE Grupo_Pesquisa_ID = '.utf8_decode($_POST["grpPesqID"]).' order by ID DESC');	
-			  $row = $insercao->fetch_assoc();
-			  $query1 = $puxaBD->selectCustomQuery('update grupo_experimental set Codigo_G_Exp ='.$row["Sigla"].$row["ID"].' where ID = '.$row["ID"]);
-			  
-			
-			echo "Inseriu";
-			
-			} 
-		
-
-		
     //Cálcula a Média por Fator   
     function calculaMediaFator ($ID){
 		$puxaBD = new Crud();
