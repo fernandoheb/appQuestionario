@@ -22,7 +22,7 @@
         //identtyfier code 
         $cod_grupo_exp = null;
 	if(isset($_GET["codgrp"])){
-		$cod_grupo_exp = $_GET["codgrp"];
+		$cod_grupo_exp = strtoupper($_GET["codgrp"]);
 	}
         //get variable to allow fast test - "it is a test"
 	$eh_um_teste = '';
