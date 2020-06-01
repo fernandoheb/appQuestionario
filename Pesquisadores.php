@@ -1,5 +1,5 @@
 <?php
-	include '../functions.inc2.php';
+	include '/functions.inc2.php';
 	$puxaBD = new Crud();
 	$puxaBD->conn();
 	$name = null;
@@ -747,7 +747,7 @@ Responda as questões da seção seguinte pensando na importância que você con
 						console.log("sucesso");
 					},
                                         error:function(){
-                                            console.log("algo deu erraro na recupera��o dos dados..")
+                                            console.log("algo deu erraro na recupera?o dos dados..")
                                         }
 		   		});
                     }   
