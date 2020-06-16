@@ -1,6 +1,6 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
-	include '../functions.inc2.php';
+	include 'functions.inc2.php';
 		$puxaBD = new Crud();
 		$puxaBD->conn();
 	/*	$link = mysql_connect('localhost','root','Gerente1*');

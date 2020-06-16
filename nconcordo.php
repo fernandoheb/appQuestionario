@@ -1,5 +1,5 @@
 <?php
-	include '../functions.inc2.php';
+	include 'functions.inc2.php';
 	$puxaBD = new Crud();
 	$puxaBD->conn();
 ?>
