@@ -881,28 +881,6 @@ INSERT INTO `feedback` (`id`, `graf1`, `graf2`, `graf3`, `tempo`, `tempodetalhes
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `grupo_experimental`
---
-
-CREATE TABLE `grupo_experimental` (
-  `ID` int(6) UNSIGNED NOT NULL,
-  `Grupo_Pesquisa_ID` int(11) UNSIGNED NOT NULL,
-  `Codigo_G_Exp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Descricao` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Populacao` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DATETIME` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `grupo_experimental`
---
-
-INSERT INTO `grupo_experimental` (`ID`, `Grupo_Pesquisa_ID`, `Codigo_G_Exp`, `Descricao`, `Populacao`, `DATETIME`) VALUES
-(1, 1, 'CAEDLAB1', 'Grupo de teste inserido pelo banco', 'Todas as respostas previamente cadastradas', '2016-10-31 21:29:41');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `grupo_pesquisa`
 --
 
@@ -926,6 +904,29 @@ CREATE TABLE `grupo_pesquisa` (
 
 INSERT INTO `grupo_pesquisa` (`ID`, `Nome_Grupo`, `Sigla`, `Email_grupo`, `Responsavel`, `Senha`, `Email_resp`, `Contato`, `Descricao`, `Afiliacao`, `DATETIME`) VALUES
 (1, 'Isotani Lab', 'CAEDLAB', 'sisotani@gmail.com', 'Fernando Roberto Hebeler Andrade', '123lab', 'fernando.heb@gmail.com', NULL, 'Grupo de computação aplicada a educação coordenado pelo professor Seiji Isotani', 'Universidade de São Paulo', '2016-10-31 21:29:41');
+
+-- --------------------------------------------------------
+
+
+--
+-- Estrutura da tabela `grupo_experimental`
+--
+
+CREATE TABLE `grupo_experimental` (
+  `ID` int(6) UNSIGNED NOT NULL,
+  `Grupo_Pesquisa_ID` int(11) UNSIGNED NOT NULL,
+  `Codigo_G_Exp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Descricao` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Populacao` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DATETIME` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `grupo_experimental`
+--
+
+INSERT INTO `grupo_experimental` (`ID`, `Grupo_Pesquisa_ID`, `Codigo_G_Exp`, `Descricao`, `Populacao`, `DATETIME`) VALUES
+(1, 1, 'CAEDLAB1', 'Grupo de teste inserido pelo banco', 'Todas as respostas previamente cadastradas', '2016-10-31 21:29:41');
 
 -- --------------------------------------------------------
 
@@ -1288,6 +1289,8 @@ ALTER TABLE `subfator`
 ALTER TABLE `grupo_experimental`
   ADD CONSTRAINT `grupo_experimental_ibfk_1` FOREIGN KEY (`Grupo_Pesquisa_ID`) REFERENCES `grupo_pesquisa` (`ID`);
 
+
+ALTER TABLE `grupo_experimental` ADD UNIQUE(`Codigo_G_Exp`);
 --
 -- Limitadores para a tabela `subfator`
 --
