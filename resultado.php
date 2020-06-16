@@ -213,8 +213,8 @@
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart", "bar"]});
-      google.setOnLoadCallback(drawChart);
+      google.charts.load("visualization", "1", {packages:["corechart", "bar"]});
+      google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
       	<?php
@@ -276,7 +276,7 @@
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-		 var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+		    var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
 
         function selectHandler() {
           var selectedItem = chart.getSelection()[0];
@@ -339,7 +339,8 @@ alert("oi");
 
      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.setOnLoadCallback(drawStuff);
+      google.charts.load("visualization", "1", {packages:["corechart", "bar"]});
+      google.charts.setOnLoadCallback(drawStuff);
 
       function drawStuff() {
         <?php
@@ -1098,7 +1099,7 @@ Detalhes(0,1);
 <a href="http://www.capes.gov.br/" target="_blank"><img src="img/capes.png" class="col-sm-1"></a>
 <div class="col-sm-3">&nbsp</div>
 </td><tr><td align="center">
-<div class="col-sm-12"><p>Email de contato para sugestões e comentários: sisotani@icmc.usp.br</p></div>
+<div class="col-sm-12"><p>Email de contato para sugestões e comentários: fernando.heb@alumni.usp.br</p></div>
 </td></table> 
                     </center>
 		<!-- start: MAIN JAVASCRIPTS -->
