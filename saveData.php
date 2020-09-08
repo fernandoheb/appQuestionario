@@ -6,12 +6,12 @@
 	$puxaBD->conn();
 	
 	/*	$email = utf8_decode($_POST["email"]);
-		echo consoleLog($email);
+		consoleLog($email);
 		$retorno = $puxaBD->selectCustomQuery("select * from resposta where email = '$email'");
 		
 		$row = $retorno->fetch_assoc();
-		echo consoleLog("id =".$row['id']);	*/
-	//Salva as Respostas dos usuários
+		consoleLog("id =".$row['id']);	*/
+	//Salva as Respostas dos usuÃ¡rios
 	if(isset($_GET["salvar"])){
 			$Codigo_Experimental='expontaneo';
             $nome=$email=$genero=$escolaridade=$idade='';	
@@ -47,9 +47,9 @@
 
 		//$query1 = $puxaBD->selectCustomQuery('INSERT INTO `resposta`( `email`) VALUES ("'.utf8_decode($_POST["email"]).'")');	
 	
-                //getLastID() recupera o último auto_incremento inserido. 
+                //getLastID() recupera o Ãºltimo auto_incremento inserido. 
                $id =$puxaBD -> getLastID();
-		//echo consoleLog($testeid);
+		// consoleLog($testeid);
    
 		//$retorno = $puxaBD->selectCustomQuery("select * from resposta where email = '$email' order by datetime DESC");
 		//$row = $retorno->fetch_assoc();
@@ -77,14 +77,14 @@
                 while ($row = $resultadoMediaSubFator->fetch_assoc()){
                     switch ($row["subfator"]) {
                         
-                    //Realização
-                            case "Avanço" :                           
+                    //RealizaÃ§Ã£o
+                            case "AvanÃ§o" :                           
                                  $avanco = $row["Media"];
                                break;
                             case "Mecanica" :
                                 $mecanica = $row["Media"];
                                 break;
-                            case "Competição" :
+                            case "CompetiÃ§Ã£o" :
                                  $competicao = $row["Media"];
                                 break;
                     //imersao
@@ -97,14 +97,14 @@
                             case "Escapismo" :
                                 $escapismo = $row["Media"];
                                 break;
-                            case "Customização" :
+                            case "CustomizaÃ§Ã£o" :
                                 $customizacao = $row["Media"];
                                 break;
                     //Social
                             case "Trabalho em equipe" :
                                 $trabalhoequipe = $row["Media"];
                                 break;
-                            case "Socialização" :
+                            case "SocializaÃ§Ã£o" :
                                 $socializacao = $row["Media"];
                                 break;
                             case "Relacionamento" :
@@ -191,7 +191,7 @@
 
 	}
 
-	//Salva as respostas sobre a concordância do usuário
+	//Salva as respostas sobre a concordÃ¢ncia do usuÃ¡rio
 	if(isset($_GET["concordo"])){
 		$respostaId = $_POST["respostaId"];
 		$respostaOpinao = $_POST["respostaOpinao"];
@@ -200,10 +200,10 @@
 		$insereOpniao = $puxaBD->selectCustomQuery('INSERT INTO `concordo`(`idResposta`, `concordo`, `resultado`)
 			VALUES ("'.$respostaId.'", "'.$respostaOpinao.'", "'.utf8_decode($respostaTipoJogador).'")');
 
-		echo json_encode($insereOpniao);//Ã© obrigado o json receber alguma coisa;
+		echo json_encode($insereOpniao);//ÃƒÂ© obrigado o json receber alguma coisa;
 
 	}
-	//Salva as respostas caso o usuário discorde do resultado
+	//Salva as respostas caso o usuÃ¡rio discorde do resultado
 	if(isset($_GET["nconcordo"])){
 		$perfil = $_POST["perfilEscolhido"];
 		$id= $_POST["idJogador"];
@@ -211,10 +211,10 @@
 		$insereOpniao = $puxaBD->selectCustomQuery('INSERT INTO `nconcordo`(`idResposta`, `perfil`)
 			VALUES ("'.$id.'", "'.utf8_decode($perfil).'")');
 
-		echo json_encode($insereOpniao);//Ã© obrigado o json receber alguma coisa;
+		echo json_encode($insereOpniao);//ÃƒÂ© obrigado o json receber alguma coisa;
 
 	}
-    //Salva as respostas caso o usuário discorde do resultado - Opinião
+    //Salva as respostas caso o usuÃ¡rio discorde do resultado - OpiniÃ£o
 	if(isset($_GET["perfilIdentificado"])){
 		$respostaId = $_POST["respostaId"];
 		$respostaOpinao = $_POST["respostaOpinao"];
@@ -224,13 +224,13 @@
 			VALUES ("'.$respostaId.'", "'.$respostaOpinao.'", "'.$respostaTipoJogador.'")');
 
 
-		echo json_encode($insereOpniao);//Ã© obrigado o json receber alguma coisa;
+		echo json_encode($insereOpniao);//ÃƒÂ© obrigado o json receber alguma coisa;
 
 
 		}
 
 		
-    //Cálcula a Média por Fator   
+    //CÃ¡lcula a MÃ©dia por Fator   
     function calculaMediaFator ($ID){
 		$puxaBD = new Crud();
 		$puxaBD->conn();
@@ -260,7 +260,7 @@
 			echo("</table>");
 			$res->free();	*/
 		}	
-			//calcula a média por subcomponente
+			//calcula a mÃ©dia por subcomponente
 	function calculaMediaSUBFator ($ID){
             $puxaBD = new Crud();
             $puxaBD->conn();

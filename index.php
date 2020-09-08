@@ -1,10 +1,12 @@
 <?php
+
 	include 'functions.inc2.php';
+	setlocale(LC_ALL, 'pt_BR.UTF8');
         //database connection
 	$puxaBD = new Crud();
 	$puxaBD->conn();
-		
-        //Vari�veis que vem quando se faz o login  com o facebook        
+	$puxaBD->setCharSet();
+        //Variáveis que vem quando se faz o login  com o facebook        
         //Facebook Login
         $name = null;
 	$email = null;
@@ -18,7 +20,7 @@
 	if(isset($_GET["gender"])){
 		$gender = $_GET['gender'];
         }
-        //c�digo do grupo experimental
+        //código do grupo experimental
         //identtyfier code 
         $cod_grupo_exp = null;
 	if(isset($_GET["codgrp"])){
@@ -45,7 +47,7 @@
 		<title>Questionário do jogador</title>
 		<!-- start: META -->
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -125,7 +127,7 @@
 
 
 
-//funcao de comunica��o com a API do Facebook
+//funcao de comunicação com a API do Facebook
   function testAPI(cod_grupo_exp) {
 	  //testar se está funcionando
 	  //quando fizer o login usando o facebook não pode perder a identificação do grupo, 
@@ -417,7 +419,7 @@
 																	</a>
 																</td>
 																	<td>
-																		<a href="javascript:void(0)" class="pop" data-content="Para que jogar e acabar com a partida correndo se podemos explorar, conhecer e encontrar coisas escondidas? Ei!! Aquilo ali é um baú?" data-title="Explorador" data-placement="top" data-toggle="popover">
+																		<a href="javascript:void(0)" class="pop" data-content="Para que jogar e acabar com a partida correndo se podemos explorar, conhecer e encontrar coisas escondidas? Ei!! Aquilo ali é um baÃº?" data-title="Explorador" data-placement="top" data-toggle="popover">
 																		<img src="./img/personalidade/10.png" style="max-height:110px; width:auto;min-width:auto;max-width:100%;" width="auto" alt="Explorador">
 																		<p><strong>Explorador</strong></p>
 																		</a>
@@ -425,7 +427,7 @@
 																</tr>
 																<tr>
 																	<td>
-																		<a href="javascript:void(0)" class="pop"  data-content="Números, otimização, padronização, análises... Esses são os amigos que eu preciso pra me sair cada vez melhor" data-title="Estrategista" data-placement="top" data-toggle="popover">
+																		<a href="javascript:void(0)" class="pop"  data-content="NÃºmeros, otimização, padronização, análises... Esses são os amigos que eu preciso pra me sair cada vez melhor" data-title="Estrategista" data-placement="top" data-toggle="popover">
 																		<img src="./img/personalidade/7.png" style="max-height:110px; width:auto;min-width:auto;max-width:100%;" width="auto" alt="Estrategista">
 																		<p><strong>Estrategista</strong></p>
 																		</a>
@@ -516,10 +518,11 @@ Responda as questões da seção seguinte pensando na importância que você con
 								$aux = $queryLP["max"];
 
 
-                                                                     //ficar atento a mudan�as no banco. Quando o select n�o for associativo       
+                                                                     //ficar atento a mudanças no banco. Quando o select não for associativo       
 								$customQuery='SELECT  `questao` . * ,  `escala`. * FROM `questao` INNER JOIN `escala` ON `questao`.`escalaId` = `escala`.`id` WHERE exibir = 1 ORDER BY ordem ASC';
 
 								$query2 = $puxaBD->selectCustomQuery($customQuery);
+
 
 								$step=2;
 								$respostaId=1;
@@ -527,15 +530,16 @@ Responda as questões da seção seguinte pensando na importância que você con
 								$paginacao=1;
 
 								while($queryLP = $query2->fetch_row()){//fetch_assoc
-                                                                   // echo consoleLog("questao ID".$questaoId = $queryLP["0"]);
-                                                                   // echo consoleLog("respID".$respostaId);
+                                                                   //  consoleLog("questao ID".$questaoId = $queryLP["0"]);
+                                                                   //  consoleLog("respID".$respostaId);
                                                                        //   if($queryLP["codspss"]==2440){
 
+								
 
                                                                          //    }
 
                                                                          if($respostaId==10){$respostaId++;} //<h3>'. utf8_encode($queryLP["questao"]).'</h3>
-								//echo consoleLog("questao ID ".$queryLP[0]) ;
+								// consoleLog("questao ID ".$queryLP[0]) ;
 								echo '
 																
 										<div class="container-fluid container-fullw bg-white">
@@ -543,7 +547,7 @@ Responda as questões da seção seguinte pensando na importância que você con
 													<div class="col-md-6" style="margin:0 auto; float: none!important">
 														<div class="panel panel-transparent">
 															<div class="panel-heading">
-																<h3>'. utf8_encode($queryLP[1]).'</h3>
+																<h3>'. $queryLP[1].'</h3>
 															</div>
 															<div class="larguraFixa" style="margin:0 auto; float: none!important">
 																<div class="panel-body" style="text-align:left!important">
@@ -551,23 +555,23 @@ Responda as questões da seção seguinte pensando na importância que você con
                                                                                                                                        
 																	<input type="radio" id="alt5_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="2" >
 																	<label for="alt5_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[17]) /*utf8_encode($queryLP["alt5"])*/ .'</strong>																		</label>																	</div>
+																	<strong>'.$queryLP[17] /*utf8_encode($queryLP["alt5"])*/ .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt4_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="1" '.$eh_um_teste.'>
 																	<label for="alt4_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[16]) .'</strong>																		</label>																	</div>
+																	<strong>'.$queryLP[16] .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt3_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'" value="0">
 																	<label for="alt3_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[15]) .'</strong>																		</label>																	</div>
+																	<strong>'. $queryLP[15] .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																	<input type="radio" id="alt2_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'"  value="-1">
 																	<label for="alt2_'.$queryLP[0] .'">
-																	<strong>'. utf8_encode($queryLP[14]) .'</strong>																		</label>																	</div>
+																	<strong>'. $queryLP[14] .'</strong>																		</label>																	</div>
 																	<div class="radio clip-radio radio-primary">
 																		<input type="radio" id="alt1_'.$queryLP[0] .'" name="questao_'.$queryLP[0] .'" value="-2">
 																		<label for="alt1_'.$queryLP[0] .'">
-																			<strong>'. utf8_encode($queryLP[13]) .'</strong>
+																			<strong>'. $queryLP[13] .'</strong>
 																		</label>
 																	</div>
 																</div>
@@ -700,9 +704,9 @@ Responda as questões da seção seguinte pensando na importância que você con
                     });
 
 		    $(".submitQuestionario").click(function (e) {
-                        //Valida��o dos componentes radio buttons
+                        //Validação dos componentes radio buttons
                         var nulo = 0;
- //                       console.log("valor de nulo no come�o "+nulo);
+ //                       console.log("valor de nulo no começo "+nulo);
                             var frm = document.forms[0];                                                                               
                             var elementoAntigo="";                            
                             var numElementos = frm.elements.length;
@@ -754,7 +758,7 @@ Responda as questões da seção seguinte pensando na importância que você con
                                                 //  console.log("sucesso");
                                             },
                                             error:function(){
-                                                console.log("algo deu erraro na recupera��o dos dados..")
+                                                console.log("algo deu erraro na recuperação dos dados..")
                                             }
                                     });
                         }   

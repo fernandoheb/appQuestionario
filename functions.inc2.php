@@ -1,5 +1,5 @@
 <?php
-
+ header("Content-type: text/html; charset=utf-8");
 setlocale(LC_ALL, 'pt_BR.UTF8');
 
 $endereco = './index.php';
@@ -39,7 +39,7 @@ Class Crud {
       $this->DB_HOSTNAME = $results['DB_HOSTNAME'];
       $this->DB_USERNAME = $results['DB_USERNAME'];
       $this->DB_PASSWORD = $results['DB_PASSWORD'];
-      $this->DB_DATABASE = $results['DB_DATABASE'];
+      $this->DB_DATABASE = $results['DB_EXPERIMENTAL'];
    }
 
    /* 	private $DB_HOSTNAME = 'localhost';
@@ -53,8 +53,8 @@ Class Crud {
          echo nl2br("Error: Could not connect to database \n " . mysqli_connect_error() . "\n\n"); //echo + \n need nl2br function
          echo "Erro: Não foi possível conectar com o banco de dados \n \n \n";
          echo $url . "," . $this->DB_HOSTNAME . "," . $this->DB_USERNAME . "," . $this->DB_PASSWORD . "\n \n" . mysqli_connect_error();
-         exit;
-      }
+         exit;         
+      }      
       return $this->conn;
    }
 
@@ -63,7 +63,17 @@ Class Crud {
    }
 
    function setCharSet() {
-      $this->conn->set_charset("utf8");
+      consoleLog("Charset utf8mb4");
+      //$this->conn->set_charset("utf8");
+       $this->conn->set_charset("utf8mb4");
+       //$this->conn->query("set names utf8");
+      
+       if ( TRUE !==  $this->conn->set_charset( 'utf8' ) )
+    throw new \Exception(  $this->conn->errno );
+
+      if ( TRUE !==  $this->conn->query( 'SET collation_connection = @@collation_database;' ) )
+    throw new \Exception(  $this->conn->errno );
+      
    }
 
    function close() {
@@ -213,7 +223,7 @@ function fetchAll($result) {
 }
 
 function consoleLog($texto) {
-   return "<script> console.log('$texto'); </script>";
+   echo "<script> console.log('$texto'); </script>";
 }
 
 ?>

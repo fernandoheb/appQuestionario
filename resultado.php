@@ -2,6 +2,7 @@
 	include 'functions.inc2.php';
 	$puxaBD = new Crud();
 	$puxaBD->conn();
+  $puxaBD->setCharSet();
 ?>
 
 
@@ -817,7 +818,7 @@ Detalhes(0,1);
 <script>if(screen.width<800){document.write("</tr><tr>");}</script>
 	                                                                                    <td align="center"  class="box effect6" width="25%" id="tdmain'.$i.'">
             <br></br>
-	                                                                                         <h3>'.utf8_encode($nomeFantasia).' </h3> <br></br>
+	                                                                                         <h3>'.$nomeFantasia.' </h3> <br></br>
 	                                                                                     <img src="./img/personalidade/'.$j.'.png" style="align: center;">
 <br></br>
 			<script>
@@ -827,13 +828,13 @@ Detalhes(0,1);
 					    </script>
 ';?>
         <script>
-            <?php $auxtext = utf8_encode($descr[$s]); $auxtext = preg_replace( "/\r|\n/", "", $auxtext );  $auxtext = str_split($auxtext, 250);?>
+            <?php $auxtext =$descr[$s]; $auxtext = preg_replace( "/\r|\n/", "", $auxtext );  $auxtext = str_split($auxtext, 250);?>
 <?php echo"swaltext".$s." = '".$auxtext[0]."';";?>
 <?php if(isset($auxtext[1])){echo "swaltext".$s."2='".$auxtext[1]."';";}else{echo "swaltext".$s."2='';";} ?>
 <?php if(isset($auxtext[2])){echo "swaltext".$s."3='".$auxtext[2]."';";}else{echo "swaltext".$s."3='';";} ?>
 <?php echo"swaltext".$s." = swaltext".$s."+swaltext".$s."2 + swaltext".$s."3;"; ?>
             function Alertdet<?php echo$s;?>(){
-            swal({   title: "<?php echo utf8_encode($nomeFantasia);?>",
+            swal({   title: "<?php echo $nomeFantasia;?>",
                text:swaltext<?php echo $s?>+'<br><button type="button" class="btn btn-info" disabled="disabled" style="display:none;">Saiba mais</button>',
                   type: "info",
                      html: true,

@@ -520,15 +520,15 @@ Responda as questões da seção seguinte pensando na importância que você con
 								$paginacao=1;
 
 								while($queryLP = $query2->fetch_row()){//fetch_assoc
-                                                                   // echo consoleLog("questao ID".$questaoId = $queryLP["0"]);
-                                                                   // echo consoleLog("respID".$respostaId);
+                                                                   //  consoleLog("questao ID".$questaoId = $queryLP["0"]);
+                                                                   //  consoleLog("respID".$respostaId);
                                                                        //   if($queryLP["codspss"]==2440){
 
 
                                                                          //    }
 
                                                                          if($respostaId==10){$respostaId++;} //<h3>'. utf8_encode($queryLP["questao"]).'</h3>
-								echo consoleLog("questao ID ".$queryLP[0]) ;
+								consoleLog("questao ID ".$queryLP[0]) ;
 								echo '
 																
 										<div class="container-fluid container-fullw bg-white">
